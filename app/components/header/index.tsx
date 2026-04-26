@@ -1,11 +1,43 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { getSession, logout, Session } from '../../lib/auth';
+
 export default function Header() {
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    setSession(getSession());
+  }, []);
+
+  function handleLogout() {
+    logout();
+    setSession(null);
+    window.location.reload();
+  }
+
   return (
     <div className="w-full">
       <div className="bg-gray-200 px-6 py-2 flex justify-end items-center">
-        <button className="flex items-center gap-2 text-[#7b1a2e] font-semibold text-sm hover:underline cursor-pointer">
-          <img src="/person.png" alt="person" className="w-5 h-5 object-contain" />
-          <span>Sign in or Join</span>
-        </button>
+        {session ? (
+          <div className="flex items-center gap-3">
+            <span className="text-[#7b1a2e] font-semibold text-sm">Hi, {session.username}</span>
+            <button
+              onClick={handleLogout}
+              className="text-[#7b1a2e] font-semibold text-sm hover:underline cursor-pointer"
+            >
+              Sign Out
+            </button>
+          </div>
+        ) : (
+          <a
+            href="/messages"
+            className="flex items-center gap-2 text-[#7b1a2e] font-semibold text-sm hover:underline cursor-pointer"
+          >
+            <img src="/person.png" alt="person" className="w-5 h-5 object-contain" />
+            <span>Sign in or Join</span>
+          </a>
+        )}
       </div>
 
       <div className="bg-white border-b border-gray-200 px-6 py-2 flex items-center">
@@ -43,7 +75,9 @@ export default function Header() {
         {/* Right icons */}
         <div className="flex items-center gap-3 shrink-0">
           <img src="/shield.png" alt="shield" className="w-7 h-7 object-contain cursor-pointer hover:opacity-70" />
-          <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
+          <a href="/messages">
+            <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
+          </a>
           <img src="/bag.png" alt="bag" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
         </div>
 
