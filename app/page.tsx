@@ -1,35 +1,63 @@
 import ProductDetails from "../components";
 
-function ProductImageCard() {
+const imagePanels = [
+  "model-front",
+  "model-back",
+  "model-close",
+  "sweater-flat",
+];
+
+function ProductImageCard({ variant }: { variant: string }) {
   return (
-    <div className="aspect-[4/5] border border-[#ece6de] bg-[var(--color-photo-bg)]" />
+    <button
+      className="aspect-[4/5] bg-[var(--color-photo-bg)] transition focus:outline-none focus:ring-4 focus:ring-[#e9b4b4]"
+      type="button"
+      aria-label={`${variant.replace("-", " ")} image`}
+    />
   );
 }
-
-const imagePanels = [1, 2, 3, 4];
 
 export default function Home() {
   return (
     <main className="min-h-screen w-full bg-[var(--background)]">
-      <div className="bg-[var(--color-darkGrey)] px-6 py-3 text-sm font-medium text-white">
+      <div className="bg-[var(--color-crimson)] px-4 py-5 text-sm font-medium text-white sm:px-7">
         Free Shipping on All Orders!
       </div>
 
-      <div className="border-b border-[#dcdcdc] bg-[var(--color-lightGrey)] px-6 py-4 text-sm font-semibold text-[var(--color-crimson)]">
-        Men&apos;s &gt; Hoodie&apos;s and Sweatshirts &gt; Crewnecks
+      <div className="border-b border-[#dcdcdc] bg-[var(--color-lightGrey)] px-4 py-3 text-sm font-semibold text-[var(--color-crimson)] sm:px-7">
+        <button
+          className="hover:underline focus:outline-none focus:ring-4 focus:ring-[#e9b4b4]"
+          type="button"
+        >
+          Men&apos;s
+        </button>{" "}
+        &gt;{" "}
+        <button
+          className="hover:underline focus:outline-none focus:ring-4 focus:ring-[#e9b4b4]"
+          type="button"
+        >
+          Hoodie&apos;s and Sweatshirts
+        </button>{" "}
+        &gt;{" "}
+        <button
+          className="hover:underline focus:outline-none focus:ring-4 focus:ring-[#e9b4b4]"
+          type="button"
+        >
+          Crewnecks
+        </button>
       </div>
 
-      <div className="mx-auto flex max-w-[1400px] flex-col gap-8 px-6 py-8 lg:flex-row lg:items-start">
-        <section className="grid flex-1 grid-cols-1 gap-6 sm:grid-cols-2">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-12 sm:px-8 lg:grid-cols-[1fr_430px] lg:items-start">
+        <section className="grid grid-cols-1 gap-8 sm:grid-cols-2">
           {imagePanels.map((panel) => (
-            <ProductImageCard key={panel} />
+            <ProductImageCard key={panel} variant={panel} />
           ))}
         </section>
 
-        <div className="w-full lg:max-w-[390px]">
+        <div className="w-full pt-5">
           <ProductDetails
             isNew
-            title="Nishal"
+            title="The H Sweater"
             price={24.99}
             size="S"
             condition="Excellent Condition"
