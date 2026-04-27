@@ -1,4 +1,4 @@
-import FilterCategoryImage from "./Components/filterCategoryImage/index";
+import Header from "./Components/header";
 
  export default function single_listing(){
     const backgroundColor = "white";

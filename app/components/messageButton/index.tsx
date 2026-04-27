@@ -20,11 +20,11 @@ export default function MessageButton({
         </div>
       </div>
       {/* Right section */}
-      {/*flex-1 allows the message/right section div to take up the rest of the available space */}
-      <div className="flex-1">
+      {/* flex-1 allows the message/right section div to take up the rest of the available space */}
+      {/* <div className="flex-1"> */}
         {/* message goes in here */}
-        <textarea className="w-full h-full resize-none outline-none text-black placeholder-black" placeholder="Type your shit gng"/>
-      </div>
+        {/* <textarea className="w-full h-full resize-none outline-none text-black placeholder-black" placeholder="Type your shit gng"/> */}
+      {/* </div> */}
     </button>
   );
 }
