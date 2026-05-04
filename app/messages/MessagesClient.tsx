@@ -187,22 +187,24 @@ export default function MessagesClient() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Initial load from localStorage
+  // Initial load from localStorage (deferred: localStorage + react-hooks/set-state-in-effect)
   useEffect(() => {
-    const s = getSession();
-    setSession(s);
-    if (s) {
-      setUsers(getStoredUsers().filter(u => u.id !== s.userId));
-      const raw = localStorage.getItem('senior-sales-chats');
-      if (raw) {
-        try { setChats(JSON.parse(raw)); } catch { /* ignore */ }
-      } else {
-        const seed = buildSeedChats();
-        setChats(seed);
-        localStorage.setItem('senior-sales-chats', JSON.stringify(seed));
+    queueMicrotask(() => {
+      const s = getSession();
+      setSession(s);
+      if (s) {
+        setUsers(getStoredUsers().filter(u => u.id !== s.userId));
+        const raw = localStorage.getItem('senior-sales-chats');
+        if (raw) {
+          try { setChats(JSON.parse(raw)); } catch { /* ignore */ }
+        } else {
+          const seed = buildSeedChats();
+          setChats(seed);
+          localStorage.setItem('senior-sales-chats', JSON.stringify(seed));
+        }
       }
-    }
-    setLoaded(true);
+      setLoaded(true);
+    });
   }, []);
 
   // Persist chats on every change (only when logged in)

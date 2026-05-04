@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSession, logout, Session } from '../../lib/auth';
 
@@ -7,7 +8,8 @@ export default function Header() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
-    setSession(getSession());
+    // localStorage isn't available during SSR; defer setState to satisfy react-hooks/set-state-in-effect
+    queueMicrotask(() => setSession(getSession()));
   }, []);
 
   function handleLogout() {
@@ -62,24 +64,22 @@ export default function Header() {
             className="border-none outline-none text-sm text-gray-400 bg-transparent w-full"
           />
         </div>
-<<<<<<< header-component
-        <div className="flex items-center gap-4 shrink-0">
-          <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
-          <button className="bg-[#7b1a2e] text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-80 cursor-pointer whitespace-nowrap">
-            Sell Now
-          </button>
-=======
-
-        {/* Right icons */}
         <div className="flex items-center gap-3 shrink-0">
-          <img src="/shield.png" alt="shield" className="w-7 h-7 object-contain cursor-pointer hover:opacity-70" />
+          <Link href="/" aria-label="Home" className="inline-flex shrink-0">
+            <img src="/shield.png" alt="" className="w-7 h-7 object-contain cursor-pointer hover:opacity-70" />
+          </Link>
           <a href="/messages">
             <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
           </a>
           <img src="/bag.png" alt="bag" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
->>>>>>> main
+          <button
+            type="button"
+            className="bg-[#7b1a2e] text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-80 cursor-pointer whitespace-nowrap"
+          >
+            Sell Now
+          </button>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

@@ -2,20 +2,6 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
 
-            {/* Top bar */}
-            <div className="bg-gray-200 px-6 py-2 flex justify-end items-center">
-                <span className="text-[#7b1a2e] font-semibold text-sm">
-                    Sign in or Join
-                </span>
-            </div>
-
-            {/* Logo bar */}
-            <div className="bg-white border-b border-gray-200 px-6 py-3">
-                <span className="text-[#7b1a2e] font-black text-xl tracking-widest">
-                    SENIOR SALES
-                </span>
-            </div>
-
             {/* Login box */}
             <div className="flex flex-1 items-center justify-center py-16">
                 <div className="bg-white rounded-2xl shadow-md px-10 py-10 w-full max-w-md">

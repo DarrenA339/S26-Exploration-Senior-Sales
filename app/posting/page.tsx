@@ -1,11 +1,6 @@
-import Header from "../Components/header";
-
 export default function posting() {
     return(
         <div className="flex flex-col">
-            <div>
-                <Header />
-            </div>
             <div className="text-red-900 font-bold text-4xl mt-20 flex flex-col ml-100">
                 <div>
                     Posting Page
