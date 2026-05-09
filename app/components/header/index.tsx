@@ -40,9 +40,9 @@ export default function Header() {
         )}
       </div>
       <div className="bg-white border-b border-gray-200 px-6 py-2 flex items-center">
-        <span className="text-[#7b1a2e] font-black text-lg tracking-widest shrink-0 mr-8">
+        <a href="/" className="text-[#7b1a2e] font-black text-lg tracking-widest shrink-0 mr-8 hover:opacity-80">
           SENIOR SALES
-        </span>
+        </a>
         <nav className="flex items-center gap-5 shrink-0">
           {["Women's", "Men's", "Furniture", "Decor", "Electronics", "Miscellaneous"].map((item) => (
             <a
@@ -62,22 +62,39 @@ export default function Header() {
             className="border-none outline-none text-sm text-gray-400 bg-transparent w-full"
           />
         </div>
-<<<<<<< header-component
         <div className="flex items-center gap-4 shrink-0">
-          <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
-          <button className="bg-[#7b1a2e] text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-80 cursor-pointer whitespace-nowrap">
-            Sell Now
-          </button>
-=======
-
-        {/* Right icons */}
-        <div className="flex items-center gap-3 shrink-0">
-          <img src="/shield.png" alt="shield" className="w-7 h-7 object-contain cursor-pointer hover:opacity-70" />
-          <a href="/messages">
+          <a href="messages">
             <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
           </a>
-          <img src="/bag.png" alt="bag" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
->>>>>>> main
+          {session ? (
+            <a href="/Posting" className="bg-[#7b1a2e] text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-80 cursor-pointer whitespace-nowrap">
+              Sell Now
+            </a>
+          ) : (
+            <a href="/messages" className="bg-[#7b1a2e] text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-80 cursor-pointer whitespace-nowrap">
+              Sell Now
+            </a>
+          )}
+        </div>
+      </div>
+      <div className="bg-red-800 text-white text-sm py-2 overflow-hidden whitespace-nowrap w-full">
+        <div className="animate-marquee inline-block">
+          Free Shipping on All Orders! &nbsp;•&nbsp;
+          New Arrivals Every Week! &nbsp;•&nbsp;
+          Top Brands at Low Prices! &nbsp;•&nbsp;
+          Sell Your Items Today! &nbsp;•&nbsp;
+          Free Shipping on All Orders! &nbsp;•&nbsp;
+          New Arrivals Every Week! &nbsp;•&nbsp;
+          Top Brands at Low Prices! &nbsp;•&nbsp;
+          Sell Your Items Today! &nbsp;•&nbsp;
+          Free Shipping on All Orders! &nbsp;•&nbsp;
+          New Arrivals Every Week! &nbsp;•&nbsp;
+          Top Brands at Low Prices! &nbsp;•&nbsp;
+          Sell Your Items Today! &nbsp;•&nbsp;
+          Free Shipping on All Orders! &nbsp;•&nbsp;
+          New Arrivals Every Week! &nbsp;•&nbsp;
+          Top Brands at Low Prices! &nbsp;•&nbsp;
+          Sell Your Items Today! &nbsp;•&nbsp;
         </div>
       </div>
     </div >

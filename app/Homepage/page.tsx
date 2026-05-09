@@ -6,7 +6,7 @@ export default function homepage() {
             <div>
                 <Header />
             </div>
-            <div className="w-full h-screen flex flex-row bg-white">
+            <div className="w-full flex flex-row bg-white ">
                 <div className="relative w-1/3 h-full">
                     <img src="/Left.png" alt="Homepage Picture" className="w-full h-full object-cover" />
                     <div className="absolute inset-0 flex items-center justify-center text-white text-3xl font-bold flex-col gap-18">

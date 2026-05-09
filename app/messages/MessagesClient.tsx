@@ -285,7 +285,12 @@ export default function MessagesClient() {
       : users;
 
   return (
-    <div className="flex flex-1 overflow-hidden border-t border-gray-200">
+    <div className="flex flex-col flex-1 overflow-hidden">
+      <div className="px-6 py-3 shrink-0">
+        <span className="text-red-800 font-bold text-2xl">Messages</span>
+        <span className="text-red-800 text-sm ml-2">Chat with All Sellers!</span>
+      </div>
+      <div className="flex flex-1 overflow-hidden border-t border-gray-200">
       {/* LEFT: Sidebar */}
       <div className="w-80 border-r border-gray-200 flex flex-col shrink-0">
         {/* Logged-in user + logout */}
@@ -470,6 +475,7 @@ export default function MessagesClient() {
           <p className="text-sm">Select a person to start chatting</p>
         </div>
       )}
-    </div>
+      </div>
+      </div>
   );
 }

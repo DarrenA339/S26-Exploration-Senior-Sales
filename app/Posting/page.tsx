@@ -6,7 +6,7 @@ export default function posting() {
             <div>
                 <Header />
             </div>
-            <div className="text-red-900 font-bold text-4xl mt-20 flex flex-col ml-100">
+            <div className="text-red-900 font-bold text-4xl mt-20 flex flex-col items-start w-full max-w-4xl mx-auto px-8">
                 <div>
                     Posting Page
                 </div>
@@ -98,6 +98,11 @@ export default function posting() {
                 </div>
             </div>
             <div className="flex flex-col gap-y-4 mt-10 ml-8">
+            </div>
+            <div className="mt-1 mb-10 flex justify-center">
+                <button className="bg-[#7b1a2e] text-white font-bold text-lg px-12 py-3 rounded-full hover:opacity-80 cursor-pointer">
+                    Post
+                </button>
             </div>
         </div>  
     )
