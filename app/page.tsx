@@ -1,28 +1,28 @@
-import ProductPreviewCard from "@/components/ProductPreviewCard";
-
-const products = [
-  { imageSrc: "/shoes.PNG", name: "Shoes", size: "8.5", price: 30 },
-  { imageSrc: "/shoes.PNG", name: "Pants", size: "M", price: 15 },
-  { imageSrc: "/shoes.PNG", name: "Sweater", size: "XL", price: 60 },
-  { imageSrc: "/shoes.PNG", name: "Jacket", size: "L", price: 50 },
-  { imageSrc: "/shoes.PNG", name: "Hat", size: "S", price: 10 },
-  { imageSrc: "/shoes.PNG", name: "Boots", size: "9", price: 40 },
-];
-
-export default function Home() {
-  return (
-    <main className="min-h-screen bg-gray-100">
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {products.map((product, index) => (
-            <ProductPreviewCard
-              key={index}
-              imageSrc={product.imageSrc}
-              name={product.name}
-              size={product.size}
-              price={product.price}
-            />
-          ))}
+export default function homepage() {
+    return(
+        <div className="flex flex-col">
+            <div className="w-full h-screen flex flex-row bg-white">
+                <div className="relative w-1/3 h-full">
+                    <img src="/Left.png" alt="Homepage Picture" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 flex items-center justify-center text-white text-3xl font-bold flex-col gap-18">
+                        <div>
+                            {"It's that Time of the Year"}
+                        </div>
+                        <div>
+                            Discounted Prices on All Items!
+                        </div>
+                        <div className="flex flex-col gap-y-4 justify-center items-center text-6xl">
+                            <div>Everything</div>
+                            <div>Must Go</div>
+                        </div>
+                        <button className="bg-red-900 hover:bg-red-500 text-white font-bold py-4 px-8 text-2xl rounded-full">
+                            Shop Now
+                        </button>
+                    </div>
+                </div>
+                <img src="/middle.png" alt="Homepage Picture" className="w-1/3 h-full object-cover" />
+                <img src="/right.png" alt="Homepage Picture" className="w-1/3 h-full object-cover" />
+            </div>
         </div>
       </div>
     </main>

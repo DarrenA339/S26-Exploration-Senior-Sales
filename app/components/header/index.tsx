@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getSession, logout, Session } from '../../lib/auth';
 
@@ -7,7 +8,8 @@ export default function Header() {
   const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
-    setSession(getSession());
+    // localStorage isn't available during SSR; defer setState to satisfy react-hooks/set-state-in-effect
+    queueMicrotask(() => setSession(getSession()));
   }, []);
 
   function handleLogout() {
@@ -39,30 +41,21 @@ export default function Header() {
           </a>
         )}
       </div>
-
       <div className="bg-white border-b border-gray-200 px-6 py-2 flex items-center">
-
-        {/* Logo */}
         <span className="text-[#7b1a2e] font-black text-lg tracking-widest shrink-0 mr-8">
           SENIOR SALES
         </span>
-
-        {/* Nav links */}
         <nav className="flex items-center gap-5 shrink-0">
-          {["Women's", "Men's", "Furniture", "Decor", "Electronics", "Miscellaneous"].map(
-            (item) => (
-              <a
-                key={item}
-                href="#"
-                className="text-[#7b1a2e] font-bold text-sm hover:underline cursor-pointer whitespace-nowrap"
-              >
-                {item}
-              </a>
-            )
-          )}
+          {["Women's", "Men's", "Furniture", "Decor", "Electronics", "Miscellaneous"].map((item) => (
+            <a
+              key={item}
+              href="#"
+              className="text-[#7b1a2e] font-bold text-sm hover:underline cursor-pointer whitespace-nowrap"
+            >
+              {item}
+            </a>
+          ))}
         </nav>
-
-        {/* Search bar */}
         <div className="flex items-center border border-gray-300 rounded-full px-3 py-1.5 gap-2 flex-1 mx-6">
           <img src="/search.png" alt="search" className="w-4 h-4 object-contain shrink-0" />
           <input
@@ -71,16 +64,21 @@ export default function Header() {
             className="border-none outline-none text-sm text-gray-400 bg-transparent w-full"
           />
         </div>
-
-        {/* Right icons */}
         <div className="flex items-center gap-3 shrink-0">
-          <img src="/shield.png" alt="shield" className="w-7 h-7 object-contain cursor-pointer hover:opacity-70" />
+          <Link href="/" aria-label="Home" className="inline-flex shrink-0">
+            <img src="/shield.png" alt="" className="w-7 h-7 object-contain cursor-pointer hover:opacity-70" />
+          </Link>
           <a href="/messages">
             <img src="/chat.png" alt="chat" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
           </a>
           <img src="/bag.png" alt="bag" className="w-6 h-6 object-contain cursor-pointer hover:opacity-70" />
+          <button
+            type="button"
+            className="bg-[#7b1a2e] text-white text-sm font-bold px-5 py-2 rounded-full hover:opacity-80 cursor-pointer whitespace-nowrap"
+          >
+            Sell Now
+          </button>
         </div>
-
       </div>
     </div>
   );
