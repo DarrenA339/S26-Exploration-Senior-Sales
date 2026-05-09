@@ -24,4 +24,7 @@ export default function homepage() {
                 <img src="/right.png" alt="Homepage Picture" className="w-1/3 h-full object-cover" />
             </div>
         </div>
-    )}
+      </div>
+    </main>
+  );
+}
